@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // 编译目标 ECMAScript 版本
+    "useDefineForClassFields": true, // 类字段是否使用 define 而不是 set
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // 编译过程中需要引入的库文件
+    "allowJs": true, // 是否允许编译 JS 文件 (逐步迁移时有用)
+    "skipLibCheck": true, // 跳过所有声明文件的类型检查 (加快编译)
+    "esModuleInterop": true, // 允许从没有设置默认导出的模块中默认导入
+    "allowSyntheticDefaultImports": true, // 允许从没有默认导出的模块中默认导入
+    "strict": true, // 启用所有严格类型检查选项
+    "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致
+    "module": "ESNext", // 指定模块代码生成: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'esnext'
+    "moduleResolution": "Node", // 模块解析策略
+    "resolveJsonModule": true, // 允许导入 .json 文件
+    "isolatedModules": true, // 将每个文件作为单独的模块（与 Babel 类似）
+    "noEmit": true, // 不生成输出文件 (Vite 会处理编译)
+    "jsx": "react-jsx", // 支持 JSX
+    "baseUrl": ".", // 用于解析非相对模块名称的基目录
+    "paths": {
+      // 模块路径别名，例如 "@/*": ["src/*"]
+      "@/*": ["src/*"]
+    }
+    // 如果你的主进程或预加载脚本也用 TS，可能需要为它们单独配置或调整这里的 "noEmit"
+    // 但通常 vite-plugin-electron 会处理它们的编译
+  },
+  "include": [
+    "src", // 你的渲染进程代码 (React)
+    "electron", // 你的主进程和预加载脚本代码
+    "vite.config.ts" // 如果你的 vite 配置文件也是 .ts
+  ] // 要编译的文件或目录
+}
